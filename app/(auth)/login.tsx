@@ -22,7 +22,7 @@ import { LinearGradient } from "expo-linear-gradient";
 
 const { width, height } = Dimensions.get("window");
 
-// New medical cross logo component
+
 const MedicalCrossIcon = ({ size = 60, color = "#fff" }) => {
   return (
     <View style={[styles.logo, { width: size, height: size }]}>
@@ -64,7 +64,7 @@ const Login = () => {
     const response = await login(email, password)
      if(response){
       setIsLoading(false);
-      //set email AsyncStorage
+      
       await AsyncStorage.setItem("userEmail", email);
       router.replace("/(dashboard)/home");
       Alert.alert("Success", "Login successful");
