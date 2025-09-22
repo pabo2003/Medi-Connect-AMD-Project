@@ -6,7 +6,7 @@ import * as ImagePicker from 'expo-image-picker';
 import { getCurrentUser, logout } from "@/services/authService";
 import { useRouter } from "expo-router";
 
-// Define TypeScript interfaces
+
 interface UserData {
   name: string;
   email: string;
