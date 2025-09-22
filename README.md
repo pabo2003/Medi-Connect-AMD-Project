@@ -20,3 +20,6 @@ git clone https://github.com/your-username/Medi-Connect.git
 cd Medi-Connect
 npm install
 expo start
+
+
+Youtube link - https://youtu.be/VpVm0fiO-6I?si=adToF_hB8fElzxev
