@@ -21,7 +21,7 @@ import { LinearGradient } from "expo-linear-gradient";
 
 const { width, height } = Dimensions.get("window");
 
-// Medical cross logo component
+
 const MedicalCrossIcon = ({ size = 60, color = "#fff" }) => {
   return (
     <View style={[styles.logo, { width: size, height: size }]}>
