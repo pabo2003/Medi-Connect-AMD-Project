@@ -47,7 +47,6 @@ const Account = () => {
   const [editingMember, setEditingMember] = useState<FamilyMember | null>(null);
   const currentEmail = getCurrentUser() ?? "";
 
-  // User profile data - empty initially
   const [userData, setUserData] = useState<UserData>({
     name: "",
     email: currentEmail,
@@ -56,16 +55,13 @@ const Account = () => {
     address: "",
   });
 
-  // Family members data - empty initially
   const [familyMembers, setFamilyMembers] = useState<FamilyMember[]>([]);
 
-  // Prescriptions data
   const [prescriptions, setPrescriptions] = useState<Prescription[]>([
     { id: "1", name: "Blood Pressure Medication", date: "2023-06-15", doctor: "Dr. Smith", status: "Active" },
     { id: "2", name: "Vitamin D Supplements", date: "2023-07-20", doctor: "Dr. Johnson", status: "Completed" },
   ]);
 
-  // New family member form
   const [newMember, setNewMember] = useState<NewMember>({
     name: "",
     age: "",
@@ -73,7 +69,6 @@ const Account = () => {
     healthConditions: "",
   });
 
-  // Edit form state
   const [editForm, setEditForm] = useState<NewMember>({
     name: "",
     age: "",
@@ -81,7 +76,6 @@ const Account = () => {
     healthConditions: "",
   });
 
-  // Pick image from gallery
   const pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
@@ -95,7 +89,6 @@ const Account = () => {
     }
   };
 
-  // Handle input changes
   const handleInputChange = (field: keyof UserData, value: string): void => {
     setUserData({
       ...userData,
@@ -103,7 +96,6 @@ const Account = () => {
     });
   };
 
-  // Handle new member input changes
   const handleNewMemberChange = (field: keyof NewMember, value: string): void => {
     setNewMember({
       ...newMember,
@@ -111,7 +103,6 @@ const Account = () => {
     });
   };
 
-  // Handle edit form changes
   const handleEditFormChange = (field: keyof NewMember, value: string): void => {
     setEditForm({
       ...editForm,
@@ -119,40 +110,33 @@ const Account = () => {
     });
   };
 
-  // Save user data
   const saveUserData = () => {
-    // Validate required fields
     if (!userData.name || !userData.email || !userData.phone) {
       Alert.alert("Error", "Please fill in all required fields (Name, Email, Phone)");
       return;
     }
 
-    // Validate email format
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(userData.email)) {
       Alert.alert("Error", "Please enter a valid email address");
       return;
     }
 
-    // Validate phone number (basic validation)
     if (userData.phone.length < 10) {
       Alert.alert("Error", "Please enter a valid phone number");
       return;
     }
 
-    // Validate age
     const ageAsNumber = parseInt(userData.age);
     if (userData.age && (isNaN(ageAsNumber) || ageAsNumber < 0 || ageAsNumber > 150)) {
       Alert.alert("Error", "Please enter a valid age");
       return;
     }
 
-    // Save data
     Alert.alert("Success", "Profile updated successfully!");
     setEditing(false);
   };
 
-  // Add new family member
   const addFamilyMember = () => {
     if (!newMember.name || !newMember.age || !newMember.relationship) {
       Alert.alert("Error", "Please fill in all required fields");
@@ -172,7 +156,6 @@ const Account = () => {
     Alert.alert("Success", "Family member added successfully");
   };
 
-  // Edit family member
   const editFamilyMember = (member: FamilyMember) => {
     setEditingMember(member);
     setEditForm({
@@ -184,7 +167,6 @@ const Account = () => {
     setIsEditModalVisible(true);
   };
 
-  // Save edited family member
   const saveEditedMember = () => {
     if (!editingMember) return;
 
@@ -211,7 +193,6 @@ const Account = () => {
     Alert.alert("Success", "Family member updated successfully");
   };
 
-  // Delete family member
   const deleteFamilyMember = (id: string): void => {
     Alert.alert(
       "Confirm Delete",
@@ -230,7 +211,6 @@ const Account = () => {
     );
   };
 
-  // Upload prescription
   const uploadPrescription = async () => {
     try {
       let result = await ImagePicker.launchImageLibraryAsync({
@@ -241,7 +221,6 @@ const Account = () => {
       });
 
       if (!result.canceled) {
-        // Create a new prescription entry
         const newPrescription: Prescription = {
           id: Date.now().toString(),
           name: `Prescription ${prescriptions.length + 1}`,
@@ -258,7 +237,6 @@ const Account = () => {
     }
   };
 
-  // Handle logout
   const handleLogout = async () => {
     try {
       await logout();
@@ -269,7 +247,6 @@ const Account = () => {
     }
   };
 
-  // Render family member as table row
   const renderFamilyMember = ({ item }: { item: FamilyMember }) => (
     <LinearGradient colors={['#8A2BE2', '#FF00FF']} style={styles.memberRow}>
       {/* Name Column */}
@@ -312,7 +289,6 @@ const Account = () => {
     </LinearGradient>
   );
 
-  // Render prescription item
   const renderPrescription = ({ item }: { item: Prescription }) => (
     <LinearGradient colors={['#8A2BE2', '#FF00FF']} style={styles.prescriptionItem}>
       <View style={styles.prescriptionContent}>
