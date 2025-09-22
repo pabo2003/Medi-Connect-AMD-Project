@@ -1,15 +1,22 @@
-Medi Connect App
+Medi-Connect
 
-A healthcare mobile application built with React Native that provides medicine management, family health tracking, and prescription management.
+Medi-Connect is a mobile app built with **Expo + React Native** that helps users manage medicines, place orders, and track wellness habits.
 
-Features
+🚀 Features
+- Customer registration & login
+- Add / update / delete medicines
+- Place orders
+- Contact support
+- Health & wellness tips
 
-    Medicine Management: Browse and order medicines
+ 🛠️ Tech Stack
+- React Native (Expo)
+- Node.js + Express.js (backend)
+- MongoDB (database)
 
-    Family Profiles: Manage family members' health information
-
-    Prescription Tracking: Upload and manage medical prescriptions
-
-    Health Reminders: Set medication and appointment reminders
-
-    User Authentication: Secure login and registration system
+📦 Installation
+```bash
+git clone https://github.com/your-username/Medi-Connect.git
+cd Medi-Connect
+npm install
+expo start
