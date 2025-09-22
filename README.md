@@ -12,7 +12,7 @@ Medi-Connect is a mobile app built with **Expo + React Native** that helps users
  🛠️ Tech Stack
 - React Native (Expo)
 - Node.js + Express.js (backend)
-- MongoDB (database)
+- Firebase (database)
 
 📦 Installation
 ```bash
