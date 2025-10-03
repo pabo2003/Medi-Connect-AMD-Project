@@ -1,0 +1,52 @@
+1. Create Account On https://expo.dev/signup
+
+2.Login Into Your Account 
+  eas login
+
+3.make eas.json on your root directory
+   {
+  "build": {
+    "preview": {
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk"
+      }
+    }
+  }
+}
+
+
+4.geanrate Project Id
+  eas build:configure
+
+5.it Shows like 
+  “ Created @username/project-slug: a812186d-faa0-479a-9d6f-940422cff342 ”
+
+6.add it on your app.config.js
+   extra: {
+  eas: {
+    projectId: "a812186d-faa0-479a-9d6f-940422cff342"
+  }
+}
+
+
+new app.config.js like 
+ export default {
+  expo: {
+    name: "your App Name",
+    slug: "your App Name",
+    version: "1.0.0",
+    android: {
+      package: "com.expousername.your App Name"
+    },
+    extra: {
+      eas: {
+        projectId: "a812186d-faa0-479a-9d6f-940422cff342"  // add your project id on here
+      }
+    }
+  }
+};
+
+
+7. run build command 
+ eas build -p android --profile preview
